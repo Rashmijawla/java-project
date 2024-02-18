@@ -1,0 +1,25 @@
+pipeline {
+	agent any
+	tools {
+    	maven 'maven'
+	}
+	stages {
+	       stage("Tool Info") {   
+        	steps {               	 
+            	sh "mvn --version"     	 
+        	}
+        	}    
+    	         
+    	stage('Build') {
+        	steps {
+        	sh "mvn compile"  	 
+        	}
+    }
+   	 
+    	stage("Unit test") {          	 
+        	steps {  	 
+            	sh "mvn test"          	 
+       	}
+}
+}
+}
